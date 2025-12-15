@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ink & White Media Library</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar">
+    <div class="logo">Ink & White</div>
+    <nav class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#media">Media</a>
+      <a href="#about">About</a>
+      <a href="#terms">Terms</a>
+
+      <div class="search-container">
+        <input
+          type="text"
+          id="searchBar"
+          class="search-bar"
+          placeholder="Search media..."
+        />
+        <!-- login buttons (separate class, not filter-btn) -->
+        <button type="button" class="login-btn" onclick="handleGmailSignIn()">
+          Sign in with Gmail
+        </button>
+        <button type="button" class="login-btn" onclick="handlePhoneSignIn()">
+          Sign in with OTP
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section id="home" class="hero">
+  <!-- 🔥 HERO BACKGROUND VIDEO – ADD THIS -->
+  <video class="hero-bg-video" autoplay muted loop playsinline>
+    <source src="videos/marvel/marvel.mp4" type="video/mp4">
+  </video>
+
+  <!-- existing rotating axis -->
+  <div class="carousel">
+    <div class="circle">
+      <img src="https://i.pinimg.com/736x/06/cc/cd/06cccd2c5ea92f4950a280a8dc7a22d3.jpg" alt="Poster 1">
+      <img src="https://i.pinimg.com/736x/c8/d5/6a/c8d56a731a5bf5d20d3340e86c3dd5b2.jpg" alt="Poster 2">
+      <img src="https://i.pinimg.com/736x/86/b5/84/86b58456248a666d73ad630ad3dfcff1.jpg" alt="Poster 3">
+    </div>
+  </div>
+
+  <div class="hero-content">
+    <h1>Ink & White Media Library</h1>
+    <p>Superheroes, space, machines and more – in one place.</p>
+    <button onclick="document.getElementById('media').scrollIntoView({behavior:'smooth'})">
+      Explore Now
+    </button>
+  </div>
+</section>
+
+  <!-- ===== MEDIA SECTION (single section) ===== -->
+  <!-- =========================
+     MULTI MEDIA SECTIONS
+     (Replace the old single #media section with this)
+     ========================= -->
+
+<!-- ===== MARVEL SECTION ===== -->
+<section id="media-marvel" class="media-section">
+  <!-- background animation layer for Marvel -->
+  <video class="media-bg-video" autoplay muted loop playsinline>
+    <source src="videos/marvel/marvel.mp4" type="video/mp4">
+  </video>
+
+  <div class="media-inner">
+    <h2 class="section-title">Marvel</h2>
+
+    <div class="filter-container">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="image">Images</button>
+      <button class="filter-btn" data-filter="video">Videos</button>
+      <button class="filter-btn" data-filter="premium">Premium</button>
+    </div>
+
+    <div class="media-grid">
+      <!-- keep the same structure and data-* attributes your script expects -->
+      <div class="media-box"
+           data-type="image"
+           data-title="iron man"
+           data-premium="true"
+           data-tags="iron-man,marvel,tony stark,avengers"
+           data-is-free="false"
+           data-download-url="files/iron-man.jpg">
+        <img src="media/marvel/ironman.jpeg" alt="Iron Man">
+        <span class="premium-badge">Premium</span>
+        <div class="media-info">
+          <div class="media-title">Iron Man</div>
+          <div class="media-price">$4.99</div>
+          <button class="download-btn">Download</button>
+        </div>
+      </div>
+
+      <div class="media-box"
+           data-type="image"
+           data-title="spider man"
+           data-premium="true"
+           data-tags="spiderman,marvel,peter parker,avengers"
+           data-is-free="false"
+           data-download-url="files/spiderman.jpg">
+        <img src="media/marvel/ironman.jpeg" alt="Spider-Man">
+        <span class="premium-badge">Premium</span>
+        <div class="media-info">
+          <div class="media-title">Spider-Man</div>
+          <div class="media-price">$5.99</div>
+          <button class="download-btn">Download</button>
+        </div>
+      </div>
+
+
+      <div class="media-box"
+           data-type="image"
+           data-title="marvel-placeholder"
+           data-premium="false"
+           data-tags="placeholder,test,marvel,dr.strange,"
+           data-is-free="true"
+           data-download-url="files/dr. strange.jpeg">
+        <img src="media/marvel/Doctor Strange.jpeg" alt="Placeholder">
+        <div class="media-info">
+          <div class="media-title">Dr.-Strange</div>
+          <div class="media-price">$3.7</div>
+          <button class="download-btn">Download</button>
+        </div>
+      </div>
+    </div>
+
+      <!-- placeholder / empty box to test UI -->
+      <div class="media-box"
+           data-type="image"
+           data-title="marvel-placeholder"
+           data-premium="false"
+           data-tags="placeholder,test,marvel"
+           data-is-free="true"
+           data-download-url="">
+        <img src="" alt="Placeholder">
+        <div class="media-info">
+          <div class="media-title">Placeholder</div>
+          <div class="media-price">Free</div>
+          <button class="download-btn">Download</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-controls">
+      <button class="load-more-btn">Load more</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DC SECTION ===== -->
+<section id="media-dc" class="media-section">
+  <video class="media-bg-video" autoplay muted loop playsinline>
+    <source src="videos/dc/dc.mp4" type="video/mp4">
+  </video>
+
+  <div class="media-inner">
+    <h2 class="section-title">DC</h2>
+
+    <div class="filter-container">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="image">Images</button>
+      <button class="filter-btn" data-filter="video">Videos</button>
+      <button class="filter-btn" data-filter="premium">Premium</button>
+    </div>
+
+    <div class="media-grid">
+      <div class="media-box"
+           data-type="image"
+           data-title="batman"
+           data-premium="true"
+           data-tags="batman,dc,bruce wayne,gotham"
+           data-is-free="false"
+           data-download-url="files/batman.jpg">
+        <img src="media/dc/_ (6).jpeg" alt="Batman">
+        <span class="premium-badge">Premium</span>
+        <div class="media-info">
+          <div class="media-title">Batman</div>
+          <div class="media-price">$4.49</div>
+          <button class="download-btn">Download</button>
+        </div>
+      </div>
+
+      <div class="media-box"
+           data-type="image"
+           data-title="superman"
+           data-premium="true"
+           data-tags="superman,dc,clark kent"
+           data-is-free="false"
+           data-download-url="files/superman.jpg">
+        <img src="/media/dc/superman.jpeg" alt="Superman">
+        <span class="premium-badge">Premium</span>
+        <div class="media-info">
+          <div class="media-title">Superman</div>
+          <div class="media-price">$3.99</div>
+          <button class="download-btn">Download</button>
+        </div>
+      </div>
+
+      <div class="media-box"
+           data-type="image"
+           data-title="dc-placeholder"
+           data-premium="false"
+           data-tags="placeholder,test,dc"
+           data-is-free="true"
+           data-download-url="">
+        <img src="" alt="Placeholder">
+        <div class="media-info">
+          <div class="media-title">Placeholder</div>
+          <div class="media-price">Free</div>
+          <button class="download-btn">Download</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-controls">
+      <button class="load-more-btn">Load more</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BIKE SECTION ===== -->
+<section id="media-bike" class="media-section">
+  <video class="media-bg-video" autoplay muted loop playsinline>
+    <source src=".mp4" type="video/mp4">
+  </video>
+
+  <div class="media-inner">
+    <h2 class="section-title">Bikes</h2>
+
+    <div class="filter-container">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="image">Images</button>
+      <button class="filter-btn" data-filter="video">Videos</button>
+      <button class="filter-btn" data-filter="premium">Premium</button>
+    </div>
+
+    <div class="media-grid">
+      <div class="media-box"
+           data-type="image"
+           data-title="racing superbike"
+           data-premium="false"
+           data-tags="bike,superbike,racing,motorcycle"
+           data-is-free="true"
+           data-download-url="files/racing-superbike.jpg">
+        <img src="media/bike/_ (1).jpeg" alt="Racing Superbike">
+        <div class="media-info">
+          <div class="media-title">Racing Superbike</div>
+          <div class="media-price">Free</div>
+          <button class="download-btn">Download</button>
+        </div>
+      </div>
+
+      <div class="media-box"
+           data-type="image"
+           data-title="futuristic superbike"
+           data-premium="true"
+           data-tags="bike,superbike,futuristic"
+           data-is-free="false"
+           data-download-url="files/futuristic-superbike.jpg">
+        <img src="media/bike/_ (2).jpeg" alt="Futuristic Superbike">
+        <span class="premium-badge">Premium</span>
+        <div class="media-info">
+          <div class="media-title">Futuristic Superbike</div>
+          <div class="media-price">$4.49</div>
+          <button class="download-btn">Download</button>
+        </div>
+      </div>
+
+      <div class="media-box"
+           data-type="image"
+           data-title="bike-placeholder"
+           data-premium="false"
+           data-tags="placeholder,test,bike"
+           data-is-free="true"
+           data-download-url="">
+        <img src="" alt="Placeholder">
+        <div class="media-info">
+          <div class="media-title">Placeholder</div>
+          <div class="media-price">Free</div>
+          <button class="download-btn">Download</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-controls">
+      <button class="load-more-btn">Load more</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CAR SECTION ===== -->
+<section id="media-car" class="media-section">
+  <video class="media-bg-video" autoplay muted loop playsinline>
+    <source src="videos/car/Porsche_Daytona_Racing_Video_Ready.mp4" type="video/mp4">
+  </video>
+
+  <div class="media-inner">
+    <h2 class="section-title">Cars</h2>
+
+    <div class="filter-container">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="image">Images</button>
+      <button class="filter-btn" data-filter="video">Videos</button>
+      <button class="filter-btn" data-filter="premium">Premium</button>
+    </div>
+
+    <div class="media-grid">
+      <div class="media-box"
+           data-type="image"
+           data-title="classic muscle car"
+           data-premium="true"
+           data-tags="car,muscle-classic,vehicle"
+           data-is-free="false"
+           data-download-url="files/classic-muscle-car.jpg">
+        <img src="media/car/Audi Aura 🔥.jpeg" alt="Classic Muscle Car">
+        <span class="premium-badge">Premium</span>
+        <div class="media-info">
+          <div class="media-title">Classic Muscle Car</div>
+          <div class="media-price">$3.49</div>
+          <button class="download-btn">Download</button>
+        </div>
+      </div>
+
+      <div class="media-box"
+           data-type="image"
+           data-title="cyberpunk city car"
+           data-premium="false"
+           data-tags="car,cyberpunk,city,vehicle"
+           data-is-free="true"
+           data-download-url="files/cyberpunk-city-car.jpg">
+        <img src="media/car/Audi R8 ABT XGT😰🥶.jpeg" alt="Cyberpunk City Car">
+        <div class="media-info">
+          <div class="media-title">Cyberpunk City Car</div>
+          <div class="media-price">Free</div>
+          <button class="download-btn">Download</button>
+        </div>
+      </div>
+
+      <div class="media-box"
+           data-type="image"
+           data-title="car-placeholder"
+           data-premium="false"
+           data-tags="placeholder,test,car"
+           data-is-free="true"
+           data-download-url="">
+        <img src="" alt="Placeholder">
+        <div class="media-info">
+          <div class="media-title">Placeholder</div>
+          <div class="media-price">Free</div>
+          <button class="download-btn">Download</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-controls">
+      <button class="load-more-btn">Load more</button>
+    </div>
+  </div>
+</section>
+
+    
+         
+  <!-- NO RESULTS -->
+  <div id="noResults" class="no-results" style="display: none">
+    No media found matching your search.
+  </div>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="about">
+    <h2>About Us</h2>
+    <p>
+      Ink & White is a premium media library for creators, editors, and enthusiasts.
+      Explore superheroes, cinematic universes, machines, and space visuals — all curated
+      for storytelling and edits.
+    </p>
+  </section>
+
+  <!-- ===== TERMS ===== -->
+  <section id="terms" class="terms">
+    <h2>Terms & Conditions</h2>
+    <p>
+      By using our website, you agree to follow our policies. All media files are licensed
+      for personal or commercial use upon purchase where required. Unauthorized redistribution
+      is prohibited.
+    </p>
+  </section>
+
+  <!-- ===== PREVIEW MODAL ===== -->
+  <div id="previewModal" class="preview-modal">
+    <div class="preview-content">
+      <span id="previewClose" class="preview-close">&times;</span>
+      <div class="preview-media-container">
+        <img id="previewImage" src="" alt="Preview" style="display: none" />
+        <video id="previewVideo" controls style="display: none"></video>
+      </div>
+      <h3 id="previewTitle"></h3>
+      <p id="previewPrice"></p>
+      <button id="previewDownloadBtn" class="download-btn">Download / Buy</button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 Ink & White Media. All Rights Reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
